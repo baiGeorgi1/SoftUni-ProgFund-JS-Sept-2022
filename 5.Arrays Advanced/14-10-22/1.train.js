@@ -3,13 +3,13 @@ function train(array) {
         .shift()
         .split(' ')
         .map(Number);
-    let maxCapacity = Number(array.shift());
-    let length = wagon.length;
+    let maxCapacity = Number(array.shift());    
 
     for (let commandLine = 0; commandLine < array.length; commandLine++) {
-        let command = array[commandLine].split(' ');
+        let commandArr = array[commandLine].split(' ');
 
         function checking(arr) {
+            let length = wagon.length;
             for (let index = 0; index < length; index++) {
                 if (arr[0] === 'Add') {
                     wagon.push(Number(arr[1]));
@@ -21,11 +21,10 @@ function train(array) {
                         if (passengers + wagon[i] <= maxCapacity) {
                             wagon[i] += passengers; return;
                         }
-
                     }
                 }
             }
-        } checking(command)
+        } checking(commandArr)
     }
     console.log(wagon.join(' '));
 }
