@@ -1,26 +1,22 @@
 class Vehicle {
-    constructor(type,model,parts,fuel){
+    constructor(type, model, parts, fuel) {
         this.type = type;
         this.model = model;
         this.parts = parts;
-            this.engine = parts.engine;
-            this.power = parts.power;
-            this.quality = this.engine*this.power;
+        this.engine = Number(parts.engine);
+        this.power = Number(parts.power);
+        this.quality = this.engine * this.power;
         this.fuel = fuel;
-
-
     }
-    drive(input){
-        this.fuel -=input;
-        this.parts.quality;
+    drive(input) {
+        this.fuel -= input;
+        this.quality;
     }
 }
+let Vehicle = result;
 
+let parts = {engine: 9, power: 500};
+let vehicle = new Vehicle('l', 'k', parts, 840);
+vehicle.drive(20);
 
-
-
-let parts = { engine: 6, power: 100 };
-let vehicle = new Vehicle('a', 'b', parts, 200);
-vehicle.drive(100);
-console.log(vehicle.fuel);
-console.log(vehicle.parts.quality);
+expect(typeof(vehicle.fuel)).to.equal('number');
