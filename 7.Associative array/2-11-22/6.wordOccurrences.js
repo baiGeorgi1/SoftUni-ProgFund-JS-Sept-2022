@@ -1,26 +1,19 @@
 function wordCount(arr) {
-    let countObj = [];
+    const wordCounter = {};
 
-    for (const line of arr) {
-        let name =  {line} ;
-
-        let counter = 1;
-        let word = countObj.find(el => el.line === line);
-        if (word) {
-            counter += 1;
-            word.repeat = counter;
+    for (const word of arr) {
+        if (!wordCounter.hasOwnProperty(word)) {
+            wordCounter[word] = 1;
         } else {
-            name.repeat = counter;
-            countObj.push(name)
+            wordCounter[word]++;
         }
     }
-   for (const line of countObj) {
-     
-        console.log(`${Object.key[line]} -> ${Object.values[line]} times`);
-    
-    
-   }    
-     
-   
+    let sortedWords = Object.entries(wordCounter)
+        .sort((kvpA, kvpB) => kvpB[1] - kvpA[1]);
+    let sortedWordCounter = Object.fromEntries(sortedWords);
+
+    for (const word in sortedWordCounter) {
+        console.log(`${word} -> ${sortedWordCounter[word]} times`);
+    }
 }
-wordCount(["dog", "bye", "city", "dog", "dad", "boys", "ginger"])
+wordCount(["Here", "is", "the", "first", "sentence", "Here", "is", "another", "sentence", "And", "finally", "the", "third", "sentence"])

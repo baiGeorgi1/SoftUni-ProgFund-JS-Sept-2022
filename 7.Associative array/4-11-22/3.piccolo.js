@@ -3,7 +3,9 @@ function parking(listArray) {
     for (const line of listArray) {
         let [act, carNumber] = line.split(', ');
         if (act === 'IN') {
-            parkingList.push(carNumber);
+            if (!parkingList.includes(carNumber)){
+                 parkingList.push(carNumber);
+            }   
         } 
         if (act === 'OUT') {
             if (parkingList.includes(carNumber)) {
@@ -18,7 +20,7 @@ function parking(listArray) {
         parkingList.forEach(car => console.log(car));
     }
 }
-parking(['IN, CA2844AA',
+parking(['IN, CA2844AA','IN, CA2822UU',
     'IN, CA1234TA',
     'OUT, CA2844AA',
     'IN, CA9999TT',
