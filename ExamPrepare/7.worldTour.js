@@ -30,8 +30,8 @@ function worldTour(input) {
                 let newDest = arguments[1];
                 if (tour.includes(oldDest)) {
                     tour = tour.replace(oldDest, newDest);
-                    console.log(tour);
                 }
+                console.log(tour);
                 break;
         }
         line = input.shift();

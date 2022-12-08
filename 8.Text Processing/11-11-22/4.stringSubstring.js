@@ -1,12 +1,18 @@
 function stringSubstring(searching, input) {
-    let text = input.toLowerCase();
-    let searchingWord = text.match(searching.toLowerCase());
-
-    if (searchingWord !== null) {
-        return console.log(searching);
+    let text = input.toLowerCase().split(' ');
+    let found = [];
+    for (const word of text) {
+        if (searching.toLowerCase() === word.toLowerCase()) {
+            found.push(searching);
+            return console.log(searching);
+        }       
     }
-    console.log(`${searching} not found!`);
+    if (found.length < 1) {
+            console.log(`${searching} not found!`);
+        }
 }
-stringSubstring('JavascriPt1',
-    'JavaScript1 is the best programming javascript language'
+
+stringSubstring('javascript',
+    'JavaScriptis the best programming language'
+
 )

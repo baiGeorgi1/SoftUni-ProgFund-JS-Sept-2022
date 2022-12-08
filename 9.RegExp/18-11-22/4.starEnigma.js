@@ -15,8 +15,7 @@ function enigma(inputArr) {
         }
         decoded.push(decoding);
     }
-    const infoPattern = /([\w]*)@(?<planet>[A-Za-z]+)([\w]*):(?<population>[\d]+)([\w]*)!(?<command>[A|D])!([\w]*)->(?<army>[\d]+)([\w]*)/g;
-
+    const infoPattern = /([\w]*)@(?<planet>[A-Za-z]+)([\w]*):(?<population>[\d]+)([\w]*)!(?<command>[A|D])!([\w]*)->(?<army>[\d]+)\1/g;
     let attack = 0;
     let destr = 0;
     const attPlanet = [];
@@ -24,6 +23,7 @@ function enigma(inputArr) {
     for (const task of decoded) {
         let toDo = task.matchAll(infoPattern);
         if (toDo !== null) {
+
             for (const order of toDo) {
                 if (order.groups.command === 'A') {
                     attack++;
@@ -47,4 +47,4 @@ function enigma(inputArr) {
     }
 }
 enigma([3, 'tt(DGsvywgerx>6444444444%H%1B9444', ' GQhrr|A977777(H(TTTT ', 'EHfsytsnhf?8555&I&2C9555SR'])
-//enigma([2,'STCDoghudd4=63333$D$0A53333','EHfsytsnhf?8555&I&2C9555SR'])
+enigma([2, 'STCDoghudd4=63333$D$0A53333', 'EHfsytsnhf?8555&I&2C9555SR'])
